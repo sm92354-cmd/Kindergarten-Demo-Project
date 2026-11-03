@@ -53,3 +53,8 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example

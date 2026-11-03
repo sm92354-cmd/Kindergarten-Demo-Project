@@ -64,6 +64,81 @@ services:
       retries: 5
       start_period: 10s
 
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+
+  # Student Service
+  studentservice:
+    build:
+      context: ./studentservice
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./studentservice/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  # Teacher Service
+  teacherservice:
+    build:
+      context: ./teacherservice
+    ports:
+      - "5002:5002"
+    env_file:
+      - ./teacherservice/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  # Employee Service
+  employeeservice:
+    build:
+      context: ./employeeservice
+    ports:
+      - "5003:5003"
+    env_file:
+      - ./employeeservice/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  # Profile Service
+  profileservice:
+    build:
+      context: ./profileservice
+    ports:
+      - "5004:5004"
+    env_file:
+      - ./profileservice/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      object-storage:
+        condition: service_healthy
+
+  # Thumbnail Worker
+  thumbnailworker:
+    build:
+      context: ./thumbnailworker
+    env_file:
+      - ./thumbnailworker/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      object-storage:
+        condition: service_healthy
+
+
+
 volumes:
   mongo-data:
   object-storage-data:

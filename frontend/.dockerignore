@@ -1,2 +1,8 @@
-./Dockerfile
-./node_modules
+
+
+# Exclude local dependencies
+node_modules
+
+# Exclude environment files and secrets
+.env
+.env.*
