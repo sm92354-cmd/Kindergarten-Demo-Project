@@ -25,8 +25,13 @@ async function main() {
   const mongo = new MongoClient(required("MONGODB_URI"), { serverSelectionTimeoutMS: 5000 });
   await mongo.connect();
   const db = mongo.db(process.env.DATABASE_NAME || "kindergarten");
-  const s3 = createS3Client(config);
-  const storage = createStorage({ s3, ...config });
+const s3 = createS3Client(config);
+
+const publicS3 = config.publicPath
+  ? createS3Client({ ...config, endpoint: config.publicPath })
+  : s3;
+
+const storage = createStorage({ s3, publicS3, ...config });
   await storage.ensureBuckets();
   const media = createMedia({ db, storage });
 

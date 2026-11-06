@@ -1,6 +1,10 @@
 node_modules
 test
 npm-debug.log
+
+# Exclude environment files and secrets
 .env
+.env.*
+
 Dockerfile
 .dockerignore
