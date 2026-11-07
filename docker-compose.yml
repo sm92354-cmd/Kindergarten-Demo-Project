@@ -137,7 +137,19 @@ services:
       object-storage:
         condition: service_healthy
 
-
+  # Nginx Reverse Proxy
+  nginx:
+    build:
+      context: ./nginx
+    container_name: kindergarten-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - studentservice
+      - teacherservice
+      - employeeservice
+      - profileservice
 
 volumes:
   mongo-data:

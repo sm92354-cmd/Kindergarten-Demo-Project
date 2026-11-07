@@ -1,4 +1,4 @@
-export const PROFILE_BASE = process.env.REACT_APP_PROFILE_API_URL || "http://localhost:5004";
+export const PROFILE_BASE = process.env.REACT_APP_PROFILE_API_URL || "";
 export const MAX_AVATAR_BYTES = 5 * 1024 * 1024;
 export const AVATAR_TYPES = ["image/jpeg", "image/png", "image/webp"];
 

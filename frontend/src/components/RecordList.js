@@ -55,7 +55,7 @@ function RecordRow({ record, config, disabled, onEdit, onDelete, onNotice }) {
         </form>
       ) : (
         <>
-          <Photo kind={config.label.toLowerCase()} recordId={record.recordId} name={name} initials={initials || "?"}
+          <Photo kind={config.label.toLowerCase()} recordId={record.recordId || record[config.idField]} name={name} initials={initials || "?"}
             color={config.color} disabled={disabled} onNotice={onNotice} />
           <div className="record-person"><strong>{name}</strong><span>{config.idLabel}: {record[config.idField]}</span></div>
           <div className="record-detail"><span>{config.detailLabel}</span><p>{record[config.detailField]}</p></div>

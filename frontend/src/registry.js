@@ -2,7 +2,7 @@ export const registries = {
   students: {
     label: "Students",
     singular: "Student",
-    base: process.env.REACT_APP_STUDENT_API_URL || "http://localhost:5001",
+    base: process.env.REACT_APP_STUDENT_API_URL || "/api/students",
     idField: "roll",
     idLabel: "Roll number",
     detailField: "address",
@@ -19,7 +19,7 @@ export const registries = {
   teachers: {
     label: "Teachers",
     singular: "Teacher",
-    base: process.env.REACT_APP_TEACHER_API_URL || "http://localhost:5002",
+    base: process.env.REACT_APP_TEACHER_API_URL || "/api/teachers",
     idField: "id",
     idLabel: "Teacher ID",
     detailField: "subject",
@@ -36,7 +36,7 @@ export const registries = {
   employees: {
     label: "Employees",
     singular: "Employee",
-    base: process.env.REACT_APP_EMPLOYEE_API_URL || "http://localhost:5003",
+    base: process.env.REACT_APP_EMPLOYEE_API_URL || "/api/employees",
     idField: "id",
     idLabel: "Employee ID",
     detailField: "position",
